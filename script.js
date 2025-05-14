@@ -130,20 +130,6 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
-// Dynamic Text Effect
-const texts = ["HI!", "Hola!", "Halo!", "Connect With Me!"];
-let textIndex = 0;
-const dynamicTextElement = document.querySelector(".typewriter-text");
-
-function changeText() {
-  dynamicTextElement.innerHTML = `<h3 class="dynamic-item">${texts[textIndex]}</h3>`;
-  textIndex = (textIndex + 1) % texts.length;
-}
-
-// Change text every 2 seconds
-setInterval(changeText, 2000);
-changeText();
-
 // Progress Bar Animation
 window.addEventListener('load', function () {
   const progressBars = document.querySelectorAll('.progress-bar');
@@ -211,4 +197,58 @@ document.getElementById('contactForm').addEventListener('submit', function(event
 
   // Clear the form
   document.getElementById('contactForm').reset();
+});
+
+// Enhanced Scroll Progress
+window.addEventListener('scroll', function() {
+  const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+  const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  const scrollPercent = (scrollTop / scrollHeight) * 100;
+  document.querySelector('.progress-bar').style.width = scrollPercent + '%';
+});
+
+// Back to Top Button
+const backToTopButton = document.getElementById('back-to-top');
+window.addEventListener('scroll', function() {
+  if (window.pageYOffset > 300) {
+    backToTopButton.style.display = 'block';
+  } else {
+    backToTopButton.style.display = 'none';
+  }
+});
+
+backToTopButton.addEventListener('click', function() {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+});
+
+// Enhanced Project Card Animation
+document.querySelectorAll('.project-card').forEach(card => {
+  card.addEventListener('mousemove', (e) => {
+    const xAxis = (window.innerWidth / 2 - e.pageX) / 25;
+    const yAxis = (window.innerHeight / 2 - e.pageY) / 25;
+    card.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+  });
+
+  card.addEventListener('mouseenter', () => {
+    card.style.transition = 'none';
+  });
+
+  card.addEventListener('mouseleave', () => {
+    card.style.transition = 'all 0.5s ease';
+    card.style.transform = 'rotateY(0deg) rotateX(0deg)';
+  });
+});
+
+// Enhanced Typewriter Effect
+const dynamicText = new Typed('.typewriter-text', {
+  strings: ["Web Developer", "Student", "Tech Enthusiast", "Let's Connect!"],
+  typeSpeed: 70,
+  backSpeed: 40,
+  loop: true,
+  showCursor: true,
+  cursorChar: '|',
+  smartBackspace: true
 });

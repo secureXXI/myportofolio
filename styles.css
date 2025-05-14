@@ -604,3 +604,239 @@ body.dark-mode {
     height: 150px;
   }
 }
+
+/* Enhanced Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+@keyframes rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Floating Social Icons */
+.floating-social {
+  position: fixed;
+  right: 30px;
+  bottom: 30px;
+  z-index: 99;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.social-float {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 20px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.social-float::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, #0d6efd, #00f7ff);
+  z-index: -1;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.social-float:hover::before {
+  opacity: 1;
+}
+
+.social-float:hover {
+  transform: translateY(-5px) scale(1.1);
+  box-shadow: 0 8px 25px rgba(13, 110, 253, 0.3);
+}
+
+.github { background-color: #333; }
+.linkedin { background-color: #0077b5; }
+.instagram { background-color: #e1306c; }
+
+/* Background Elements */
+.bg-elements {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.bg-circle, .bg-square, .bg-triangle {
+  position: absolute;
+  opacity: 0.1;
+  filter: blur(40px);
+}
+
+.bg-circle {
+  border-radius: 50%;
+  background: linear-gradient(45deg, #0d6efd, #00f7ff);
+}
+
+.circle-1 {
+  width: 300px;
+  height: 300px;
+  top: 10%;
+  left: 5%;
+  animation: float 15s ease-in-out infinite, rotate 20s linear infinite;
+}
+
+.circle-2 {
+  width: 200px;
+  height: 200px;
+  bottom: 15%;
+  right: 10%;
+  animation: float 12s ease-in-out infinite reverse, rotate 25s linear infinite reverse;
+}
+
+.circle-3 {
+  width: 150px;
+  height: 150px;
+  top: 50%;
+  left: 30%;
+  animation: float 18s ease-in-out infinite, rotate 15s linear infinite;
+}
+
+.bg-square {
+  width: 250px;
+  height: 250px;
+  background: linear-gradient(45deg, #ff00cc, #3333ff);
+}
+
+.square-1 {
+  top: 70%;
+  left: 20%;
+  animation: float 14s ease-in-out infinite reverse;
+}
+
+.bg-triangle {
+  width: 0;
+  height: 0;
+  border-left: 150px solid transparent;
+  border-right: 150px solid transparent;
+  border-bottom: 300px solid rgba(0, 247, 255, 0.2);
+}
+
+.triangle-1 {
+  top: 20%;
+  right: 15%;
+  animation: float 16s ease-in-out infinite;
+}
+
+/* Enhanced Project Cards */
+.project-card {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.project-card:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.project-card .card-overlay {
+  background: linear-gradient(to top, rgba(13, 110, 253, 0.9), rgba(0, 247, 255, 0.7));
+}
+
+/* Enhanced Skills Section */
+.skill-item {
+  transition: all 0.3s ease;
+}
+
+.skill-item:hover {
+  transform: translateY(-5px);
+}
+
+.skill-icon {
+  transition: all 0.3s ease;
+}
+
+.skill-item:hover .skill-icon {
+  transform: scale(1.2) rotate(15deg);
+  color: #0d6efd;
+}
+
+/* Enhanced Timeline */
+.timeline-item {
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.timeline-item:hover {
+  transform: translateX(15px);
+}
+
+/* Enhanced Contact Form */
+.contact-form input,
+.contact-form textarea {
+  transition: all 0.3s ease;
+  border: 1px solid #ddd;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+  transform: translateY(-2px);
+}
+
+/* Enhanced Scroll Progress */
+.scroll-progress {
+  height: 8px;
+}
+
+.scroll-progress .progress-bar {
+  background: linear-gradient(90deg, #0d6efd, #00f7ff, #ff00cc);
+  background-size: 200% 100%;
+  animation: gradient 3s ease infinite;
+}
+
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.pulse-button {
+  animation: pulse 2s infinite;
+  position: relative;
+  overflow: hidden;
+}
+
+.pulse-button::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255,255,255,0.2);
+  transform: scale(0);
+  border-radius: inherit;
+  animation: ripple 2s infinite;
+}
+
+@keyframes ripple {
+  0% { transform: scale(0); opacity: 1; }
+  100% { transform: scale(2); opacity: 0; }
+}
